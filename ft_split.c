@@ -19,10 +19,20 @@ char	**ft_split(char const *s, char c);
 
 int	main(void)
 {
-	char	*foods = "Oren,noodle,rice";
+	char	*foods = "ha,hi,hu";
 
 	char **result = ft_split(foods, ',');
-	printf("%s\n", result);
+	int i = 0;
+	if (result)
+	{
+		while (result[i])
+		{
+			printf("%s\n", result[i]);
+			free(result[i]);
+			i++;
+		}
+		free(result);
+	}
 	return (0);
 }
 
@@ -31,23 +41,38 @@ char	**ft_split(char const *s, char c)
 	int		i;
 	int		j;
 	int		n;
+	int		n_substr;
 	char	**array;
 
+	i = 0;
+	n_substr = 1;
+	while (s[i])
+	{
+		if (s[i] == c)
+		n_substr++;
+		i++;
+	}
+	array = (char **)malloc(sizeof(char *) * (n_substr + 1));
+	if (!array)
+		return (NULL);
 	i = 0;
 	j = 0;
 	n = 0;
 	while (s[i])
 	{
-		if (s[i] == c)
+		if (s[i] == c || s[i+1] == '\0')
 		{
-			array[n] = ft_substr(s, j, i+1);
+			if (s[i] == c)
+				array[n] = ft_substr(s, j, i - j);
+			else
+				array[n] = ft_substr(s, j, i - j + 1);
 			n++;
-			j = j + i;
+			j = i + 1;
 		}
 		i++;
 	}
-	printf ("array --> %s\n", array);
-	return (0);
+	array[n] = NULL;
+	return (array);
 }
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
