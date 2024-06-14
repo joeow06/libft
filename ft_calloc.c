@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jow <jow@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/14 10:23:02 by jow               #+#    #+#             */
-/*   Updated: 2024/06/14 10:47:18 by jow              ###   ########.fr       */
+/*   Created: 2024/06/07 13:18:34 by jow               #+#    #+#             */
+/*   Updated: 2024/06/14 15:12:16 by jow              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd);
-
-void	ft_putnbr_fd(int n, int fd)
+void	*ft_calloc(size_t count, size_t size)
 {
-	long	nb;
+	void	*res;
 
-	nb = n;
-	if (nb < 0)
-	{
-		write(fd, "-", 1);
-		nb *= -1;
-	}
-	if (nb > 9)
-	{
-		ft_putnbr_fd(nb / 10, fd);
-		ft_putchar_fd((nb % 10) + '0', fd);
-	}
-	else
-		ft_putchar_fd(nb + '0', fd);
+	if (size && count && UINT_MAX / count < size)
+		return (NULL);
+	res = malloc(size * count);
+	if (!res)
+		return (NULL);
+	ft_bzero(res, (count * size));
+	return (res);
 }
-/*
-int main(void)
-{
-	ft_putnbr_fd(12345, 1);
-	return (0);
-}*/

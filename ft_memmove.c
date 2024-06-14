@@ -6,49 +6,35 @@
 /*   By: jow <jow@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:48:26 by jow               #+#    #+#             */
-/*   Updated: 2024/06/14 10:32:07 by jow              ###   ########.fr       */
+/*   Updated: 2024/06/14 14:34:33 by jow              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*#include <stdio.h>
-#include <string.h>
-*/
 #include "libft.h"
 
-void	*ft_memmove(void *str1, const void *str2, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char	*ptr1;
-	unsigned char	*ptr2;
-	size_t			i;
-	unsigned char	temp[n];
+	char	*d;
+	char	*s;
+	size_t	i;
 
 	i = 0;
-	ptr1 = (unsigned char *)str1;
-	ptr2 = (unsigned char *)str2;
-	while (i < n)
+	d = (char *)dst;
+	s = (char *)src;
+	if (d > s)
 	{
-		temp[i] = ptr2[i];
-		i++;
+		while (len > 0)
+		{
+			len--;
+			d[len] = s[len];
+		}
 	}
-	i = 0;
-	while (i < n)
+	else
 	{
-		ptr1[i] = temp[i];
-		i++;
+		while (i < len)
+		{
+			d[i] = s[i];
+			i++;
+		}
 	}
-	return (str1);
+	return (dst);
 }
-/*
-int	main(void)
-{
-	char	src[100] = "Geeksfor";
-	char	*first;
-	char	*sec;
-
-	first = src;
-	sec = src;
-	printf("Original: %s\n", src);
-	ft_memmove(first+5, first, strlen(first) + 1);
-	printf("ft_memmove: %s\n", src);
-	printf("Memmove: %s\n", (char *)memmove(sec+5, sec, strlen(sec) + 1));
-	return (0);
-}*/

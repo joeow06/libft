@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jow <jow@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/14 10:23:02 by jow               #+#    #+#             */
-/*   Updated: 2024/06/14 10:47:18 by jow              ###   ########.fr       */
+/*   Created: 2024/06/04 10:47:11 by jow               #+#    #+#             */
+/*   Updated: 2024/06/14 12:49:41 by jow              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+/*#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+*/
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd);
-
-void	ft_putnbr_fd(int n, int fd)
+size_t	ft_strlen(const char *str)
 {
-	long	nb;
+	int	i;
 
-	nb = n;
-	if (nb < 0)
+	i = 0;
+	while (str[i] != '\0')
 	{
-		write(fd, "-", 1);
-		nb *= -1;
+		i++;
 	}
-	if (nb > 9)
-	{
-		ft_putnbr_fd(nb / 10, fd);
-		ft_putchar_fd((nb % 10) + '0', fd);
-	}
-	else
-		ft_putchar_fd(nb + '0', fd);
+	return (i);
 }
 /*
-int main(void)
+int	main()
 {
-	ft_putnbr_fd(12345, 1);
+	char	*str = "123 456   ";
+	int length = ft_strlen(str);
+	printf("Length is %d", length);
 	return (0);
-}*/
+}
+*/

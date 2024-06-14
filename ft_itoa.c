@@ -6,13 +6,17 @@
 /*   By: jow <jow@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:41:36 by jow               #+#    #+#             */
-/*   Updated: 2024/06/11 16:15:51 by jow              ###   ########.fr       */
+/*   Updated: 2024/06/14 10:44:23 by jow              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
+/*#include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
+*/
+#include "libft.h"
 
 char	*reverse(char *str);
+long	abs_val(long num);
 int		count_digit(long num);
 char	*ft_itoa(int n);
 /*
@@ -20,9 +24,10 @@ int	main(void)
 {
 	int	number = -2147483648;
 	
-	char *result = ft_itoa(number);
-	printf("result: %s\n", result);
-	free(result);
+	char *result_1 = ft_itoa(number);
+	printf("result_1: %s\n", result_1);
+	printf("result_2: %s\n", ft_itoa(2147483647));
+	free(result_1);
 	return (0);
 }*/
 
@@ -41,10 +46,8 @@ char	*ft_itoa(int n)
 	if (num == 0)
 		str[i++] = '0';
 	if (num < 0)
-	{
 		sign = 1;
-		num *= -1;
-	}
+	num = abs_val(num);
 	while (num != 0)
 	{
 		str[i++] = (num % 10) + '0';
@@ -56,13 +59,22 @@ char	*ft_itoa(int n)
 	return (reverse(str));
 }
 
+long	abs_val(long num)
+{
+	if (num < 0)
+	{
+		num *= -1;
+		return (num);
+	}
+	return (num);
+}
+
 char	*reverse(char *str)
 {
 	int		front;
 	int		back;
 	char	temp;
 
-	printf("passed string: %s\n", str);
 	back = 0;
 	front = 0;
 	while (str[back])

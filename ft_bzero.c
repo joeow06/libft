@@ -1,39 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jow <jow@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/14 10:23:02 by jow               #+#    #+#             */
-/*   Updated: 2024/06/14 10:47:18 by jow              ###   ########.fr       */
+/*   Created: 2024/06/05 11:03:35 by jow               #+#    #+#             */
+/*   Updated: 2024/06/14 10:40:46 by jow              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+/*#include <stdio.h>
+#include <string.h>
+*/
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd);
-
-void	ft_putnbr_fd(int n, int fd)
+void	ft_bzero(void *s, size_t n)
 {
-	long	nb;
+	size_t			i;
+	unsigned char	*ptr;
 
-	nb = n;
-	if (nb < 0)
+	i = 0;
+	ptr = s;
+	while (i < n)
 	{
-		write(fd, "-", 1);
-		nb *= -1;
+		ptr[i] = 0;
+		i++;
 	}
-	if (nb > 9)
-	{
-		ft_putnbr_fd(nb / 10, fd);
-		ft_putchar_fd((nb % 10) + '0', fd);
-	}
-	else
-		ft_putchar_fd(nb + '0', fd);
 }
 /*
-int main(void)
+int	main(void)
 {
-	ft_putnbr_fd(12345, 1);
+	char	array[11];
+	strcpy(array, "HelloHello");
+
+	ft_bzero(array, sizeof(char) * 5);
+	for (int i =  0; i < 11; i++)
+		printf("%c", array[i]);
+	printf("\n");
 	return (0);
-}*/
+}
+*/

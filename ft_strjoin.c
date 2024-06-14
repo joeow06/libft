@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jow <jow@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/14 10:23:02 by jow               #+#    #+#             */
-/*   Updated: 2024/06/14 10:47:18 by jow              ###   ########.fr       */
+/*   Created: 2024/06/07 16:52:32 by jow               #+#    #+#             */
+/*   Updated: 2024/06/14 15:42:57 by jow              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd);
-
-void	ft_putnbr_fd(int n, int fd)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	long	nb;
+	char	*string;
+	int		total_len;
+	size_t	i;
+	size_t	j;
 
-	nb = n;
-	if (nb < 0)
-	{
-		write(fd, "-", 1);
-		nb *= -1;
-	}
-	if (nb > 9)
-	{
-		ft_putnbr_fd(nb / 10, fd);
-		ft_putchar_fd((nb % 10) + '0', fd);
-	}
-	else
-		ft_putchar_fd(nb + '0', fd);
+	total_len = ft_strlen(s1) + ft_strlen(s2);
+	string = (char *)malloc((sizeof(char) * (total_len + 1)));
+	if (!string)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (s1[i])
+		string[i++] = s1[j++];
+	j = 0;
+	while (s2[i])
+		string[i++] = s2[j++];
+	string[i] = '\0';
+	return (string);
 }
-/*
-int main(void)
-{
-	ft_putnbr_fd(12345, 1);
-	return (0);
-}*/

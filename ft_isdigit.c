@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jow <jow@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/14 10:23:02 by jow               #+#    #+#             */
-/*   Updated: 2024/06/14 10:47:18 by jow              ###   ########.fr       */
+/*   Created: 2024/06/04 13:12:17 by jow               #+#    #+#             */
+/*   Updated: 2024/06/14 10:43:42 by jow              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+/*#include <stdio.h>
+#include <string.h>
+*/
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd);
-
-void	ft_putnbr_fd(int n, int fd)
+int	ft_isdigit(int c)
 {
-	long	nb;
-
-	nb = n;
-	if (nb < 0)
-	{
-		write(fd, "-", 1);
-		nb *= -1;
-	}
-	if (nb > 9)
-	{
-		ft_putnbr_fd(nb / 10, fd);
-		ft_putchar_fd((nb % 10) + '0', fd);
-	}
+	if (!(c >= 48 && c <= 57))
+		return (0);
 	else
-		ft_putchar_fd(nb + '0', fd);
+		return (1);
 }
 /*
-int main(void)
+int	main(void)
 {
-	ft_putnbr_fd(12345, 1);
+	char c = '1';
+	printf("Result is %d", ft_isdigit(c));
 	return (0);
-}*/
+}
+*/
