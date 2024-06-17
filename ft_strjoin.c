@@ -27,8 +27,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	while (s1[i])
 		string[i++] = s1[j++];
 	j = 0;
-	while (s2[i])
+	while (s2[j])
 		string[i++] = s2[j++];
 	string[i] = '\0';
-	return (string);
+		return (string);
 }
