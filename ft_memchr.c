@@ -30,11 +30,6 @@ void	*ft_memchr(const void *str, int c, size_t n)
 	return (NULL);
 }
 /*
-	-original 'str' is typecasted so that every byte can be interpreted.
-   -Use sub as a substitute to prevent modification of original pointer.
-	- return ((void *)sub + i for pointer arithmetic.   
-*/
-/*
 int	main(void)
 {
 	char	email[] = "johnsmith@gmail.com";

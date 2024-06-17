@@ -27,13 +27,6 @@ char	*ft_strchr(const char *str, int c)
 	return (NULL);
 }
 /*
- use str instead of str[i] to allow pointer 
- arithmetic. Cast (char*) to str cuz str holds
- the address of keyword found. Dont need *str since
- it will dereference it and show the value instead
- of the memory address.
-*/
-/*
 int	main(void)
 {
 	char	str[] = "Hello world";

@@ -15,7 +15,7 @@
 */
 #include "libft.h"
 
-int	get_len(const char *str)
+static int	get_len(const char *str)
 {
 	int	i;
 
