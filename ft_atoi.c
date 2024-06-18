@@ -6,12 +6,11 @@
 /*   By: jow <jow@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 13:35:34 by jow               #+#    #+#             */
-/*   Updated: 2024/06/14 10:40:17 by jow              ###   ########.fr       */
+/*   Updated: 2024/06/18 13:43:11 by jow              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*#include <stdio.h>
-#include <stdlib.h>
-*/
+#include <stdlib.h>*/
 #include "libft.h"
 
 int	ft_atoi(const char *str)

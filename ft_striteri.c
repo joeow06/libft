@@ -6,12 +6,12 @@
 /*   By: jow <jow@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 18:34:00 by jow               #+#    #+#             */
-/*   Updated: 2024/06/14 12:47:37 by jow              ###   ########.fr       */
+/*   Updated: 2024/06/18 12:27:04 by jow              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 /*#include <stdio.h>
 #include <stdlib.h>
-#include "libft.h"
 #include <string.h>
 #include <ctype.h>
 void	my_toupper(unsigned int i, char *c)

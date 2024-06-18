@@ -6,7 +6,7 @@
 /*   By: jow <jow@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:41:36 by jow               #+#    #+#             */
-/*   Updated: 2024/06/14 10:44:23 by jow              ###   ########.fr       */
+/*   Updated: 2024/06/18 13:38:43 by jow              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*#include <stdio.h>
@@ -15,10 +15,10 @@
 */
 #include "libft.h"
 
-char	*reverse(char *str);
-long	abs_val(long num);
-int		count_digit(long num);
-char	*ft_itoa(int n);
+static char	*reverse(char *str);
+static long	abs_val(long num);
+static int	count_digit(long num);
+char		*ft_itoa(int n);
 /*
 int	main(void)
 {
@@ -59,7 +59,7 @@ char	*ft_itoa(int n)
 	return (reverse(str));
 }
 
-long	abs_val(long num)
+static long	abs_val(long num)
 {
 	if (num < 0)
 	{
@@ -69,7 +69,7 @@ long	abs_val(long num)
 	return (num);
 }
 
-char	*reverse(char *str)
+static char	*reverse(char *str)
 {
 	int		front;
 	int		back;
@@ -91,7 +91,7 @@ char	*reverse(char *str)
 	return (str);
 }
 
-int	count_digit(long num)
+static int	count_digit(long num)
 {
 	int	digit;
 
