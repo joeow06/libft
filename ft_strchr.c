@@ -6,32 +6,37 @@
 /*   By: jow <jow@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 15:25:13 by jow               #+#    #+#             */
-/*   Updated: 2024/06/14 10:50:28 by jow              ###   ########.fr       */
+/*   Updated: 2024/06/19 16:16:33 by jow              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*#include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 */
 #include "libft.h"
 
 char	*ft_strchr(const char *str, int c)
 {
-	while (*str)
+	unsigned int	i;
+	char			chr;
+
+	chr = (char) c;
+	i = 0;
+	while (str[i])
 	{
-		if ((unsigned char)c == *str)
-			return ((char *)(str));
-		str++;
+		if (chr == str[i])
+			return ((char *)(&str[i]));
+		i++;
 	}
-	if (c == '\0')
-		return ((char *)(str));
+	if (str[i] == chr)
+		return ((char *)(&str[i]));
 	return (NULL);
 }
 /*
 int	main(void)
 {
-	char	str[] = "Hello world";
-	char	*world = ft_strchr(str, 'w');
-	printf("Result: %s\n", world);
+	printf("%s\n", ft_strchr("teste", 1024));
+	printf("%s\n", strchr("teste", 1024));
 	return (0);
 }
 */

@@ -6,7 +6,7 @@
 /*   By: jow <jow@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 17:32:53 by jow               #+#    #+#             */
-/*   Updated: 2024/06/14 17:28:32 by jow              ###   ########.fr       */
+/*   Updated: 2024/06/19 15:29:12 by jow              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -24,7 +24,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	{
 		while (s1[first] && ft_strchr(set, s1[first]))
 			first++;
-		while (ft_strchr(set, s1[last - 1]) && s1[last - 1] && last > first)
+		while (last > first && ft_strchr(set, s1[last - 1]))
 			last--;
 		str = (char *)malloc(sizeof(char) * (last - first + 1));
 		if (str)

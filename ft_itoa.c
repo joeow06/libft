@@ -6,7 +6,7 @@
 /*   By: jow <jow@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:41:36 by jow               #+#    #+#             */
-/*   Updated: 2024/06/18 13:38:43 by jow              ###   ########.fr       */
+/*   Updated: 2024/06/19 15:59:52 by jow              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*#include <stdio.h>
@@ -40,6 +40,7 @@ char	*ft_itoa(int n)
 
 	i = 0;
 	num = n;
+	sign = 0;
 	str = (char *)malloc(sizeof(char) * (count_digit(num) + 1));
 	if (!str)
 		return (NULL);
@@ -95,13 +96,15 @@ static int	count_digit(long num)
 {
 	int	digit;
 
-	digit = 1;
+	digit = 0;
+	if (num == 0)
+		return (1);
 	if (num < 0)
 	{
 		digit++;
 		num *= -1;
 	}
-	while (num)
+	while (num != 0)
 	{
 		num /= 10;
 		digit++;
