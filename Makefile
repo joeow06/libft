@@ -1,12 +1,57 @@
-SRCS	= ft_isalnum.c ft_isprint.c ft_memcmp.c  ft_putchar_fd.c ft_split.c \
-		ft_strlcat.c ft_strncmp.c ft_substr.c ft_atoi.c ft_isalpha.c \
-		ft_itoa.c ft_putendl_fd.c ft_strchr.c  ft_strlcpy.c ft_striteri.c\
-		ft_strnstr.c ft_tolower.c ft_bzero.c   ft_isascii.c ft_memcpy.c \
-		ft_memmove.c ft_putnbr_fd.c  ft_strdup.c ft_strlen.c  ft_strrchr.c \
-		ft_toupper.c ft_calloc.c  ft_isdigit.c ft_memchr.c  ft_memset.c  \
-		ft_putstr_fd.c  ft_strjoin.c ft_strmapi.c ft_strtrim.c
+SRC_DIR	= src/
 
-OBJS	= $(SRCS:.c=.o)
+INC_DIR = inc/
+
+OBJ_DIR	= obj/
+
+FT_ALL	= $(SRC_DIR)ft_all/ft_isalnum.c \
+		$(SRC_DIR)ft_all/ft_isprint.c \
+		$(SRC_DIR)ft_all/ft_memcmp.c \
+		$(SRC_DIR)ft_all/ft_putchar_fd.c \
+		$(SRC_DIR)ft_all/ft_split.c \
+		$(SRC_DIR)ft_all/ft_strlcat.c \
+		$(SRC_DIR)ft_all/ft_strncmp.c \
+		$(SRC_DIR)ft_all/ft_substr.c \
+		$(SRC_DIR)ft_all/ft_atoi.c \
+		$(SRC_DIR)ft_all/ft_isalpha.c \
+		$(SRC_DIR)ft_all/ft_itoa.c \
+		$(SRC_DIR)ft_all/ft_putendl_fd.c \
+		$(SRC_DIR)ft_all/ft_strchr.c \
+		$(SRC_DIR)ft_all/ft_strlcpy.c \
+		$(SRC_DIR)ft_all/ft_striteri.c\
+		$(SRC_DIR)ft_all/ft_strnstr.c \
+		$(SRC_DIR)ft_all/ft_tolower.c \
+		$(SRC_DIR)ft_all/ft_bzero.c \
+		$(SRC_DIR)ft_all/ft_isascii.c \
+		$(SRC_DIR)ft_all/ft_memcpy.c \
+		$(SRC_DIR)ft_all/ft_memmove.c \
+		$(SRC_DIR)ft_all/ft_putnbr_fd.c \
+		$(SRC_DIR)ft_all/ft_strdup.c \
+		$(SRC_DIR)ft_all/ft_strlen.c \
+		$(SRC_DIR)ft_all/ft_strrchr.c \
+		$(SRC_DIR)ft_all/ft_toupper.c \
+		$(SRC_DIR)ft_all/ft_calloc.c \
+		$(SRC_DIR)ft_all/ft_isdigit.c \
+		$(SRC_DIR)ft_all/ft_memchr.c  \
+		$(SRC_DIR)ft_all/ft_memset.c  \
+		$(SRC_DIR)ft_all/ft_putstr_fd.c \
+		$(SRC_DIR)ft_all/ft_strjoin.c \
+		$(SRC_DIR)ft_all/ft_strmapi.c \
+		$(SRC_DIR)ft_all/ft_strtrim.c
+
+FT_PF	= $(SRC_DIR)ft_printf/ft_putchar.c \
+	 	$(SRC_DIR)ft_printf/ft_putstr.c \
+	  	$(SRC_DIR)ft_printf/ft_putnbr.c \
+		$(SRC_DIR)ft_printf/ft_putunbr.c \
+		$(SRC_DIR)ft_printf/ft_putptr.c \
+		$(SRC_DIR)ft_printf/ft_printf.c \
+		$(SRC_DIR)ft_printf/ft_puthex.c 
+
+GNL	= $(SRC_DIR)get_next_line/get_next_line.c 
+
+SRC	= $(FT_ALL) $(FT_PF) $(GNL)
+
+OBJS	= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRC))
 
 CC		= cc
 
@@ -16,16 +61,20 @@ RM		= rm -f
 
 NAME	= libft.a
 
-.c.o:
-	$(CC) $(CFlags) -c $< -o $@
+AR	= ar rcs
 
-$(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+all: 			$(NAME)
 
-all: $(NAME)
+$(NAME): 		$(OBJS)
+				@$(AR) $(NAME) $(OBJS)
+
+$(OBJ_DIR)%.o:	$(SRC_DIR)%.c
+				@mkdir -p $(@D)
+				@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 clean:
-	$(RM) $(OBJS)
+				$(RM) -r $(OBJ_DIR)
+				$(RM) .cache_exists
 
 fclean: clean
 	$(RM) $(NAME)
